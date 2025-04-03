@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface Props {
   label: string;
   name: string;
@@ -5,8 +7,9 @@ interface Props {
 }
 
 export const Question = ({ label, name, required = true }: Props) => {
+  const [hasValue, setHasValue] = useState(false);
   return (
-    <fieldset>
+    <fieldset onChange={() => setHasValue(true)} data-hasvalue={hasValue}>
       <legend>{label}</legend>
 
       <input

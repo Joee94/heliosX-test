@@ -24,3 +24,17 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* I'm not sure how to write this in tailwind */
+fieldset {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+}
+fieldset[data-hasvalue="true"] + fieldset,
+fieldset:first-of-type {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
