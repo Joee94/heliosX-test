@@ -1,5 +1,6 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { Question } from "./Question";
+import { submitPrescriptionQuestionairre } from "../api";
 
 const questions = [
   {
@@ -26,22 +27,43 @@ const questions = [
 ];
 
 export const Main = () => {
+  const [loading, setLoading] = useState(false);
+
   const formSubmit = (event: FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    // Display the key/value pairs
-    for (const pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-    }
+
+    const formValues = Array.from(formData.entries()).map(([key, value]) => {
+      return { key, value };
+    });
+    submitPrescriptionQuestionairre(formValues)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   };
+
   return (
     <main className="bg-medx-blue-lightest w-full flex-1">
-      <form onSubmit={formSubmit}>
-        {questions.map(({ name, label }) => {
-          return <Question name={name} label={label} key={name + label} />;
-        })}
-        <button type="submit">Submit</button>
-      </form>
+      <header className="bg-medx-blue-light w-full h-fit p-5">
+        <h1>Paracetamol</h1>
+      </header>
+      <section className="p-5">
+        <h2>
+          Answer a few questions to see what treatments you're eligible for
+        </h2>
+        <form onSubmit={formSubmit}>
+          {questions.map(({ name, label }) => {
+            return <Question name={name} label={label} key={name + label} />;
+          })}
+          <button type="submit" disabled={loading}>
+            {loading ? "Loading" : "Submit"}
+          </button>
+        </form>
+      </section>
     </main>
   );
 };
