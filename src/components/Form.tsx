@@ -33,7 +33,7 @@ export const Form = () => {
   if (success)
     return (
       <section className="max-w-6xl m-auto text-3xl">
-        <p>Thank you for submitting, we'll be in touch soon</p>
+        <p>Thank you for submitting, we'll be in touch soon.</p>
       </section>
     );
 
