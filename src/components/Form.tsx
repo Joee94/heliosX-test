@@ -5,6 +5,7 @@ import { questions } from "../data";
 
 export const Form = () => {
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const formSubmit = (event: FormEvent<HTMLFormElement>) => {
     setLoading(true);
@@ -22,11 +23,19 @@ export const Form = () => {
         setLoading(false);
       })
       .finally(() => {
+        setSuccess(true);
         alert(
           formValues.map(({ key, value }) => `${key}: ${value}`).join("\n")
         );
       });
   };
+
+  if (success)
+    return (
+      <section className="max-w-6xl m-auto text-3xl">
+        <p>Thank you for submitting, we'll be in touch soon</p>
+      </section>
+    );
 
   return (
     <form
