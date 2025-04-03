@@ -32,7 +32,7 @@ fieldset {
   transform: translateY(20px);
   transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
 }
-fieldset[data-hasvalue="true"] + fieldset,
+fieldset:has(input[type="radio"]:checked) + fieldset,
 fieldset:first-of-type {
   visibility: visible;
   opacity: 1;

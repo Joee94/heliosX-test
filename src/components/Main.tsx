@@ -48,14 +48,14 @@ export const Main = () => {
 
   return (
     <main className="bg-medx-blue-lightest w-full flex-1">
-      <header className="bg-medx-blue-light h-fit p-5 ">
-        <h1 className="px-5 m-auto max-w-6xl">Paracetamol</h1>
+      <header className="m-auto bg-medx-blue-light h-fit p-5 ">
+        <h1 className="max-w-6xl m-auto">Paracetamol</h1>
       </header>
-      <section className="p-5 m-auto max-w-6xl">
-        <h2>
+      <section className="p-5">
+        <h2 className="m-auto max-w-6xl">
           Answer a few questions to see what treatments you're eligible for
         </h2>
-        <form onSubmit={formSubmit} onChange={(e) => console.log(e)}>
+        <form onSubmit={formSubmit} className="m-auto max-w-6xl">
           {questions.map(({ name, label }) => {
             return <Question name={name} label={label} key={name + label} />;
           })}
