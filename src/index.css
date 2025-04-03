@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  --color-medx-blue-dark: #003f82ff;
+  --color-medx-blue-light: #bcd4f4ff;
+  --color-medx-blue-lightest: #edf0faff;
+  --color-medx-transparent: transparent;
+
+  --color-medx-blue-text-standard: #003f82ff;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+body {
+  min-height: 100vh;
+}
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
