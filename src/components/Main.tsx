@@ -43,6 +43,11 @@ export const Main = () => {
       })
       .catch(() => {
         setLoading(false);
+      })
+      .finally(() => {
+        alert(
+          formValues.map(({ key, value }) => `${key}: ${value}`).join("\n")
+        );
       });
   };
 
@@ -65,9 +70,9 @@ export const Main = () => {
           <button
             type="submit"
             disabled={loading}
-            className="bg-medx-blue-dark rounded-lg text-white px-4 py-2 w-fit"
+            className="bg-medx-blue-dark rounded-lg text-white px-4 py-2 w-fit disabled:bg-gray-400"
           >
-            {loading ? "Loading" : "Submit"}
+            {loading ? "Loading..." : "Submit"}
           </button>
         </form>
       </section>
