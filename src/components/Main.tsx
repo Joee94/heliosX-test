@@ -49,17 +49,24 @@ export const Main = () => {
   return (
     <main className="bg-medx-blue-lightest w-full flex-1">
       <header className="m-auto bg-medx-blue-light h-fit p-5 ">
-        <h1 className="max-w-6xl m-auto">Paracetamol</h1>
+        <h1 className="max-w-6xl m-auto text-3xl">Paracetamol</h1>
       </header>
       <section className="p-5">
-        <h2 className="m-auto max-w-6xl">
+        <h2 className="m-auto max-w-6xl text-2xl mb-4">
           Answer a few questions to see what treatments you're eligible for
         </h2>
-        <form onSubmit={formSubmit} className="m-auto max-w-6xl">
+        <form
+          onSubmit={formSubmit}
+          className="m-auto max-w-6xl flex flex-col gap-3 "
+        >
           {questions.map(({ name, label }) => {
             return <Question name={name} label={label} key={name + label} />;
           })}
-          <button type="submit" disabled={loading}>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-medx-blue-dark rounded-lg text-white px-4 py-2 w-fit"
+          >
             {loading ? "Loading" : "Submit"}
           </button>
         </form>

@@ -15,8 +15,11 @@ export const Question = ({ label, name, required = true }: Props) => {
         id={`${name}-yes`}
         value="yes"
         required={required}
+        className="mr-1"
       />
-      <label htmlFor={`${name}-yes`}>Yes</label>
+      <label htmlFor={`${name}-yes`} className="mr-2">
+        Yes
+      </label>
 
       <input
         type="radio"
@@ -24,6 +27,7 @@ export const Question = ({ label, name, required = true }: Props) => {
         id={`${name}-no`}
         value="no"
         required={required}
+        className="mr-1"
       />
       <label htmlFor={`${name}-no`}>No</label>
     </fieldset>

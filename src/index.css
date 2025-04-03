@@ -26,12 +26,14 @@ body {
 }
 
 /* I'm not sure how to write this in tailwind */
-fieldset {
+fieldset,
+button {
   visibility: hidden;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
 }
+fieldset:has(input[type="radio"]:checked) + button,
 fieldset:has(input[type="radio"]:checked) + fieldset,
 fieldset:first-of-type {
   visibility: visible;
