@@ -20,6 +20,7 @@ export const Form = () => {
         setLoading(false);
       })
       .catch(() => {
+        //You could display an error message here
         setLoading(false);
       })
       .finally(() => {
