@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+# HeliosX Tech Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installation
 
-Currently, two official plugins are available:
+- run `yarn` to install dependencies.
+- run `yarn dev` to run the development server
+- run `yarn test` to run the test(s)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Methodology
 
-## Expanding the ESLint configuration
+### Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project was written in React with vite and typescript.
+I have personally not used Tailwind before, but I understood how it worked and knew a bit about it. I decided on Tailwind for styling as I know that HeliosX use it extensively and it seemed like an interesting challenge.
+I wrote a very basic test using vitest.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Approach
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+I decided when I attmpted this that I would utilise the browsers native capabilities to build the form.
+All the inputs in the form are uncontrolled and handled by the browser.
+I made use of the Browser FormData api to manage the form data submission.
+To show and hide the questions I wrote some css that only shows a given fieldset of radios when it's sibling has a value.
+This approach means that there are no react renders needed at any point in the form.
+The downside to this approach is that you miss out on some of the nicities that come with controlled react forms, such as on the fly validation, or apply dynamic classes, e.g. having a disabled class on the button based on all the values being filled out.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### What I didn't do
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+My tests are overly simplistic and don't handle sad paths. I didn't test some of the native browser capabilities like required fields. I also didn't test whether questions were visible or not because they're all renderred but hidden by a CSS that the tests didn't have access to.
+
+I would have use tanstack-query to handle caching of server data. I often use the useMutation hook for wrapping POST requests.
+
+My tailwind knowledge is very limited, I just wrote some of the more complex styles in a standard css file.
