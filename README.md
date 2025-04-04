@@ -6,6 +6,10 @@
 - run `yarn dev` to run the development server
 - run `yarn test` to run the test(s)
 
+- Node version: 22.11.0
+- npm version: 10.9.0
+- yarn version: 1.22.22
+
 ## Methodology
 
 ### Tech Stack
