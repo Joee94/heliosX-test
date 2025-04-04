@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { submitPrescriptionQuestionairre } from "../api";
+import { submitPrescriptionForm } from "../api";
 import { Question } from "./Question";
 import { questions } from "../data";
 
@@ -15,7 +15,7 @@ export const Form = () => {
     const formValues = Array.from(formData.entries()).map(([key, value]) => {
       return { key, value };
     });
-    submitPrescriptionQuestionairre(formValues)
+    submitPrescriptionForm(formValues)
       .then(() => {
         setLoading(false);
       })

@@ -1,4 +1,4 @@
-export const submitPrescriptionQuestionairre = async (
+export const submitPrescriptionForm = async (
   formData: {
     key: string;
     value: FormDataEntryValue;
